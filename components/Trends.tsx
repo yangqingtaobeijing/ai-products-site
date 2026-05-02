@@ -2,29 +2,24 @@ import { trends } from "@/data/products";
 
 export default function Trends() {
   return (
-    <section id="trends" className="mb-16">
-      <div className="flex items-center gap-3 mb-8">
-        <span className="text-3xl">📈</span>
-        <h2 className="text-2xl md:text-3xl font-bold text-white">
-          关键趋势
-        </h2>
-        <div className="flex-1 h-px bg-gradient-to-r from-white/20 to-transparent ml-4" />
+    <section id="trends" className="mb-20">
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-white mb-2">关键趋势</h2>
+        <p className="text-sm text-zinc-500">2025 年个人开发者 AI 产品的核心趋势</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {trends.map((trend, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {trends.map((trend) => (
           <div
-            key={trend.title}
-            className="p-5 rounded-xl bg-gradient-to-br from-purple-500/10 to-cyan-500/5 border border-white/10 hover:border-purple-500/30 transition-all duration-300 group"
+            key={trend.number}
+            className="group p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
           >
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 flex items-center justify-center text-white text-sm font-bold">
-                {i + 1}
-              </span>
-              <h3 className="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
-                {trend.title}
-              </h3>
-            </div>
-            <p className="text-sm text-white/60 leading-relaxed">
+            <span className="text-xs font-mono text-indigo-400/60 mb-3 block">
+              {trend.number}
+            </span>
+            <h3 className="text-base font-semibold text-white mb-2">
+              {trend.title}
+            </h3>
+            <p className="text-sm text-zinc-400 leading-relaxed">
               {trend.description}
             </p>
           </div>

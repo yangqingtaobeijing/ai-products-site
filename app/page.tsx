@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StatsBar from "@/components/StatsBar";
 import CategorySection from "@/components/CategorySection";
@@ -10,11 +11,12 @@ import { categories } from "@/data/products";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#030014]">
+    <main className="min-h-screen bg-[#0a0a0f]">
+      <Navbar />
       <Hero />
       <StatsBar />
 
-      <div id="products" className="max-w-6xl mx-auto px-6 py-16">
+      <div id="products" className="max-w-6xl mx-auto px-6 py-12">
         {categories.map((category) => (
           <CategorySection key={category.id} category={category} />
         ))}

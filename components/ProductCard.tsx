@@ -6,39 +6,48 @@ export default function ProductCard({ product }: { product: Product }) {
       href={product.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/10"
+      className="group block p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] card-hover"
     >
-      <div className="flex items-start justify-between mb-3">
-        <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
-          {product.name}
-        </h3>
-        <span className="text-xs text-white/40 group-hover:text-white/60 transition-colors">
-          →
-        </span>
+      <div className="flex items-start gap-4 mb-4">
+        <img
+          src={product.logo}
+          alt={product.name}
+          className="w-10 h-10 rounded-lg logo-img flex-shrink-0"
+          loading="lazy"
+        />
+        <div className="min-w-0">
+          <h3 className="text-base font-semibold text-white group-hover:text-indigo-400 transition-colors truncate">
+            {product.name}
+          </h3>
+          <p className="text-xs text-zinc-500 truncate">
+            {product.developer}
+            {product.developerTwitter && (
+              <span className="text-zinc-600 ml-1">
+                @{product.developerTwitter}
+              </span>
+            )}
+          </p>
+        </div>
       </div>
 
-      <p className="text-sm text-white/50 mb-4">
-        by {product.developer}
-        {product.developerTwitter && (
-          <span className="ml-1 text-purple-400/70">
-            @{product.developerTwitter}
-          </span>
-        )}
-      </p>
-
-      <p className="text-white/70 text-sm leading-relaxed mb-4">
+      <p className="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-2">
         {product.description}
       </p>
 
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <span className="text-xs px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">
-            {product.monetization}
-          </span>
+      <div className="flex items-center justify-between">
+        <div className="flex flex-wrap gap-1.5">
+          {product.tags.slice(0, 2).map((tag) => (
+            <span
+              key={tag}
+              className="text-[10px] px-2 py-0.5 rounded-full bg-white/[0.04] text-zinc-500 border border-white/[0.06]"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
-        <p className="text-sm font-semibold text-cyan-400">
-          💰 {product.revenue}
-        </p>
+        <span className="text-sm font-semibold text-emerald-400">
+          {product.revenue}
+        </span>
       </div>
     </a>
   );

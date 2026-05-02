@@ -3,19 +3,20 @@ import { stats } from "@/data/products";
 export default function StatsBar() {
   return (
     <section className="py-16 px-6">
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="text-center p-6 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10"
-          >
-            <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-2">
-              {stat.value}
-              <span className="text-lg">{stat.suffix}</span>
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className="group p-6 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1 tracking-tight">
+                {stat.value}
+              </div>
+              <div className="text-sm text-zinc-500">{stat.label}</div>
             </div>
-            <div className="text-sm text-white/50">{stat.label}</div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

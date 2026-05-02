@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Web Coding 产品案例汇总",
+  title: "AI Web Coding 产品案例汇总 | 个人开发者赚钱案例",
   description:
     "深入分析 14+ 个由个人开发者用 AI 编程工具打造并实现商业化的 Web 产品，探索一人公司的无限可能",
 };

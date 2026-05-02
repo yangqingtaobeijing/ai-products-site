@@ -2,26 +2,35 @@ import { tools, developers } from "@/data/products";
 
 export default function ToolsAndDevs() {
   return (
-    <section className="mb-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <section id="tools" className="mb-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Tools */}
         <div>
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-2xl">⚙️</span>
-            <h2 className="text-xl md:text-2xl font-bold text-white">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-white mb-2">
               常用 AI 编程工具
             </h2>
+            <p className="text-sm text-zinc-500">Vibe Coding 工具栈</p>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {tools.map((tool) => (
               <div
                 key={tool.category}
-                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all duration-300"
+                className="flex items-center gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/[0.06]"
               >
-                <span className="text-sm font-semibold text-purple-300 min-w-[120px]">
+                <span className="text-xs font-medium text-zinc-500 w-28 flex-shrink-0">
                   {tool.category}
                 </span>
-                <span className="text-sm text-white/60">{tool.items}</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {tool.items.map((item) => (
+                    <span
+                      key={item}
+                      className="text-xs px-2.5 py-1 rounded-md bg-white/[0.04] text-zinc-300 border border-white/[0.06]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -29,32 +38,40 @@ export default function ToolsAndDevs() {
 
         {/* Developers */}
         <div>
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-2xl">👤</span>
-            <h2 className="text-xl md:text-2xl font-bold text-white">
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-white mb-2">
               推荐关注的开发者
             </h2>
+            <p className="text-sm text-zinc-500">
+              #buildinpublic 代表人物
+            </p>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2">
             {developers.map((dev) => (
               <a
                 key={dev.name}
-                href={`https://twitter.com/${dev.twitter}`}
+                href={dev.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/10 transition-all duration-300 group"
+                className="flex items-center gap-4 p-4 rounded-lg bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.1] transition-all duration-300 group"
               >
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center text-white font-bold text-sm">
-                  {dev.name[0]}
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                  {dev.name.split(" ").map((n) => n[0]).join("")}
                 </div>
-                <div>
-                  <div className="text-white font-medium group-hover:text-cyan-300 transition-colors">
-                    {dev.name}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-white group-hover:text-indigo-400 transition-colors">
+                      {dev.name}
+                    </span>
+                    <span className="text-xs text-zinc-600">{dev.handle}</span>
                   </div>
-                  <div className="text-xs text-white/40">
-                    @{dev.twitter} · {dev.products}
-                  </div>
+                  <p className="text-xs text-zinc-500 truncate">
+                    {dev.products}
+                  </p>
                 </div>
+                <span className="text-xs text-emerald-400/80 font-medium flex-shrink-0">
+                  {dev.revenue}
+                </span>
               </a>
             ))}
           </div>
